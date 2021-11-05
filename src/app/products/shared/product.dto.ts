@@ -1,4 +1,4 @@
-export interface PetDto{
+export interface ProductDto {
   id: number;
   name: string;
 }
