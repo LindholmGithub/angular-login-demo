@@ -13,14 +13,9 @@ const routes: Routes = [
       .then(m => m.AuthModule)
   },
   {
-    path: 'pets',
-    loadChildren: () => import('./admin-pets/admin-pets.module')
-      .then(m => m.AdminPetsModule)
-  },
-  {
-    path: 'todos',
-    loadChildren: () => import('./todos/todos.module')
-      .then(m => m.TodosModule)
+    path: '',
+    loadChildren: () => import('./home/home.module')
+      .then(m => m.HomeModule)
   }
 ];
 

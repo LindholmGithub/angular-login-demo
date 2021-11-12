@@ -3,6 +3,7 @@ import {ProductsService} from '../shared/products.service';
 import {Observable} from 'rxjs';
 import {Product} from '../shared/product.model';
 import {ProductList} from '../shared/product-list.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -12,10 +13,11 @@ import {ProductList} from '../shared/product-list.model';
 export class ProductsComponent implements OnInit {
   $products: Observable<ProductList> | undefined;
 
-  constructor(private _productsService: ProductsService) { }
+  constructor(
+    private _productsService: ProductsService
+  ) { }
 
   ngOnInit(): void {
     this.$products = this._productsService.getProducts();
   }
-
 }

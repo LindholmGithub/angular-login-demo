@@ -34,6 +34,7 @@ export class UpdateComponent implements OnInit {
     if(this.productToUpdate) {
       let product = this.productForm.value as Product;
       product.id = this.productToUpdate.id;
+      product.ownerId = this.productToUpdate.ownerId;
       this._productService.update(product)
         .subscribe(product => {
           this._router.navigateByUrl('products');
