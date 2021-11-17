@@ -19,12 +19,18 @@ export class ProductsService {
   }
 
   getProduct(id: number) : Observable<Product> {
-    /* return this._http.get<Product>(this.productsApi + '/' + id) */
-    return of({id: id, name: 'Bilbo'})
+    return this._http.get<Product>(this.productsApi + '/' + id)
   }
 
   update(product: Product) : Observable<Product> {
-    return this._http.put<Product>(this.productsApi + '/' + product.id, product);
+    return this._http
+      .put<Product>(
+        this.productsApi + '/' + product.id, product);
+  }
+
+  create(product: Product) {
+    return this._http
+      .post<Product>(this.productsApi, product);
   }
 }
 

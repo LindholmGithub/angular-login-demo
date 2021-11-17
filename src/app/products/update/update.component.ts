@@ -15,14 +15,13 @@ export class UpdateComponent implements OnInit {
   });
   productToUpdate: Product | undefined;
 
-  constructor(private _activated: ActivatedRoute,
+  constructor(private _route: ActivatedRoute,
               private _router: Router,
-              private _productService: ProductsService
-  ) { }
+              private _productService: ProductsService) { }
 
   ngOnInit(): void {
-    let id = this._activated.snapshot.paramMap.get('id');
-    if(id){
+    let id = this._route.snapshot.paramMap.get('id');
+    if(id) {
       this._productService.getProduct(+id)
         .subscribe(product => {
           this.productToUpdate = product;
@@ -32,12 +31,13 @@ export class UpdateComponent implements OnInit {
   }
 
   update() {
-    if(this.productToUpdate) {
+    if (this.productToUpdate) {
       let product = this.productForm.value as Product;
       product.id = this.productToUpdate.id;
+      product.ownerId = this.productToUpdate.ownerId;
       this._productService.update(product)
         .subscribe(product => {
-          this._router.navigateByUrl('products')
+          this._router.navigateByUrl('products');
         });
     }
   }

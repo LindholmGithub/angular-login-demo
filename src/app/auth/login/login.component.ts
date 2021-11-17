@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {LoginUser} from "../shared/login-user";
 import {AuthService} from "../shared/auth.service";
-
+import {Router} from '@angular/router';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('',Validators.required),
   });
 
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService, private _router: Router) { }
 
   ngOnInit(): void {
 
@@ -32,13 +33,24 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  login(){
+  login() {
     let loginInfo = this.loginForm.value as LoginUser;
     this._auth.login(loginInfo)
       .then(token => {
-        console.log('token: ', token)
+        if(token) {
+          this._auth.fetchProfile()
+            .toPromise().then(() => {
+            this._router.navigateByUrl('products');
+          });
+        } else {
+          //TOdo fix this
+          console.log('Oh no! ')
+        }
+      })
+      .catch(err => {
+        //Todo fix this
+        console.error('err: ', err);
       });
-    console.log('logininfo', loginInfo);
-  };
-
+    //redirect
+  }
 }
