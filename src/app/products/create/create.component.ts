@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Product} from "../../shared/product.model";
+import {Product} from "../shared/product.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ProductsService} from "../../shared/products.service";
+import {ProductsService} from "../shared/products.service";
 
 @Component({
   selector: 'app-create',
