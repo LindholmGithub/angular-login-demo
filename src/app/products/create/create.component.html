@@ -1,7 +1,7 @@
 <form [formGroup]="productForm" (ngSubmit)="create()">
   <label for="product-name">Name: </label>
   <input id="product-name" type="text" formControlName="name">
-  <label for="product-name">Owner ID: </label>
-  <input id="product-name" type="text" formControlName="ownerId">
-  <button type="submit" [disabled]="!productForm.valid">Update</button>
+  <label for="product-ownerId">Owner ID: </label>
+  <input id="product-ownerId" type="text" formControlName="ownerId">
+  <button type="submit" [disabled]="!productForm.valid">Create</button>
 </form>

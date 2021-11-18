@@ -7,7 +7,7 @@ import {AuthService} from "./auth/shared/auth.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'petshop-frontend';
+  title = 'products-frontend';
   loggedIn: string | null;
   constructor(private _auth : AuthService) {
     this.loggedIn = this._auth.getToken();

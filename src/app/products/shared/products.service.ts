@@ -28,7 +28,7 @@ export class ProductsService {
         this.productsApi + '/' + product.id, product);
   }
 
-  create(product: Product) {
+  create(product: Product) : Observable<Product> {
     return this._http
       .post<Product>(this.productsApi, product);
   }
