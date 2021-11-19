@@ -14,8 +14,6 @@ export class CreateComponent implements OnInit {
     name: new FormControl('', Validators.required),
     ownerId: new FormControl('', Validators.required)
   });
-  productToCreate: Product | undefined;
-
   constructor(private _route: ActivatedRoute,
               private _router: Router,
               private _productService: ProductsService) { }
@@ -24,15 +22,11 @@ export class CreateComponent implements OnInit {
   }
 
   create(){
-    if (this.productToCreate){
       let product = this.productForm.value as Product;
-      product.name = this.productToCreate.name;
-      product.ownerId = this.productToCreate.ownerId;
       this._productService.create(product)
         .subscribe(product => {
           this._router.navigateByUrl('products');
         });
-    }
   }
 
 }

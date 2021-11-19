@@ -1,0 +1,5 @@
+<form [formGroup]="productForm" (ngSubmit)="delete()">
+  <label for="product-id">Id: </label>
+  <input id="product-id" type="number" formControlName="id">
+  <button type="submit" [disabled]="!productForm.valid">Delete</button>
+</form>

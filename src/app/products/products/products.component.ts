@@ -19,4 +19,9 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  delete(product: Product) {
+    this._productService.delete(product)
+      .subscribe(() => {this.$products = this._productService.getProducts();
+      });
+  }
 }

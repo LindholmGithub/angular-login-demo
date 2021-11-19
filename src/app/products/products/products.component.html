@@ -3,8 +3,11 @@
 <br>
 <br>
 <ul *ngIf="$products | async as productList">
-  <li *ngFor="let product of productList.productsList"
-      routerLink="update/{{product.id}}">
+  <li *ngFor="let product of productList.productsList">
+    <span
+    routerLink="update/{{product.id}}">
     Id: {{product.id}} - Name: {{product.name}}
+    </span>
+    <button (click)="delete(product)">X</button>
   </li>
 </ul>

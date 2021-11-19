@@ -32,6 +32,11 @@ export class ProductsService {
     return this._http
       .post<Product>(this.productsApi, product);
   }
+
+  delete(product: Product) : Observable<Product> {
+    return this._http
+      .delete<Product>(this.productsApi + '/' + product.id);
+  }
 }
 
 
